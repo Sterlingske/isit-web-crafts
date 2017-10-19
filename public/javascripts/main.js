@@ -16,6 +16,7 @@ requirejs.config({
         display: 'javascripts/tools/display',
         settings: 'javascripts/tools/settings',
         utilities: 'javascripts/tools/utilities'
+        reactbundle: 'javascripts/bundle'
     }
 });
 
