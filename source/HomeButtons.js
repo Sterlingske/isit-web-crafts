@@ -3,7 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 // import {black, red} from 'material-ui/styles/colors';
 
-class HomeButtons extends React.Component {
+export default class HomeButtons extends React.Component {
 
     constructor() {
         super();
@@ -12,6 +12,12 @@ class HomeButtons extends React.Component {
             makeImage: 'Make Image',
             makeHtml: 'Make HTML'
         };
+    }
+
+    makeHtml() {
+      $.publish('clientMakeHtml', {
+        message : 'The User wants to makeHTML.'
+      });
     }
 
     render() {
@@ -37,5 +43,3 @@ class HomeButtons extends React.Component {
 var buttonStyle = {
     margin: '15px'
 };
-
-export default HomeButtons;
