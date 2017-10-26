@@ -16,7 +16,7 @@ const elfDebugEnzyme = new ElfDebugEnzyme(true, 'sanity');
 //import mock animationFrame
 import requestAnimationFrame from '../temp-polyfills.js';
 
-describe('basic sanity test', () => {
+describe('Webcrafts Sanity Test', () => {
   it('is true, true?', () => {
     expect(true).toBe(true);
   })

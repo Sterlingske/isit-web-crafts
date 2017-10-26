@@ -19,5 +19,12 @@ import requestAnimationFrame from '../temp-polyfills.js';
 describe ('React Home Tests', () => {
   it('is true, true?', () => {
     expect(true).toBe(true);
-  })
+  });
+
+  it('renders h1 default value', () => {
+    const wrapper = shallow(<ReactHome />);
+    const h1 = <h1>An H1 element in a React Component</h1>
+    elfDebugEnzyme.getLast(wrapper, 'h1', true);
+    expect(wrapper.contains(h1)).toEqual(true);
+  });
 });
