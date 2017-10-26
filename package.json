@@ -8,6 +8,11 @@
     "start": "nodemon ./bin/www",
     "buildDev": "node_modules/.bin/webpack"
   },
+  "jest": {
+    "setupFiles": [
+      "./source/setup-jest.js"
+    ]
+  },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
@@ -18,6 +23,7 @@
     "isit-code-sespinoza": "^1.0.0",
     "isit-site-tools-sespinoza": "^1.0.1",
     "jade": "~1.11.0",
+    "jquery": "^3.2.1",
     "marked": "~0.3.6",
     "material-ui": "^0.19.4",
     "mongoose": "^4.12.4",

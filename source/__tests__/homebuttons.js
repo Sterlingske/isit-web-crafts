@@ -16,22 +16,8 @@ const elfDebugEnzyme = new ElfDebugEnzyme(true, 'sanity');
 //import mock animationFrame
 import requestAnimationFrame from '../temp-polyfills.js';
 
-describe('basic sanity test', () => {
+describe ('Home Buttons Tests', () => {
   it('is true, true?', () => {
     expect(true).toBe(true);
-  })
-  it('tests loading components', () => {
-    const div = document.createElement("div");
-    ReactDom.render(<ReactHome/>, div)
-  })
-  it('test loading home buttons', () => {
-    const home = document.createElement("home");
-    ReactDom.render(<HomeButtons/>, home)
-  })
-  it('renders h1 value', () => {
-  const wrapper = shallow(<ReactHome/>);
-  const nineSign = <h1>An H1 element in a React Component</h1>
-  elfDebugEnzyme.getLast(wrapper, 'h1', true);
-  expect(wrapper.contains(nineSign)).toEqual(true);
   })
 });
