@@ -41,5 +41,5 @@ export default class HomeButtons extends React.Component {
 }
 
 var buttonStyle = {
-    margin: '15px'
+    margin: '10px'
 };

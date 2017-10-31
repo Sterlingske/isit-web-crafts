@@ -5,8 +5,8 @@
   "scripts": {
     "test": "jest --coverage",
     "karma-test": "karma start",
-    "start": "nodemon ./bin/www",
-    "buildDev": "node_modules/.bin/webpack"
+    "start": "nodemon ./bin/www --reload",
+    "buildDev": "node_modules/.bin/webpack --watch"
   },
   "jest": {
     "setupFiles": [
@@ -34,7 +34,8 @@
     "react-dom": "^16.0.0",
     "serve-favicon": "^2.4.5",
     "sharp": "^0.18.4",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

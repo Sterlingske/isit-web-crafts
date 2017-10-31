@@ -3,6 +3,9 @@ import ReactDom from 'react-dom';
 
 import ReactHome from '../ReactHome.js';
 import HomeButtons from '../HomeButtons.js';
+import MakeHtml from '../MakeHtml.js';
+import MakeHtmlDropDowns from '../MakeHtmlDropDowns.js';
+import MakeHtmlHomeButton from '../MakeHtmlHomeButton.js';
 
 //import shallow and enzyme
 import {configure, shallow, mount} from 'enzyme';
@@ -33,5 +36,17 @@ describe('Webcrafts Sanity Test', () => {
   const nineSign = <h1>An H1 element in a React Component</h1>
   elfDebugEnzyme.getLast(wrapper, 'h1', true);
   expect(wrapper.contains(nineSign)).toEqual(true);
+  })
+  it('renders MakeHtml', () => {
+    const div = document.createElement('div');
+    ReactDom.render(<MakeHtml/>, div)
+  })
+  it('renders MakeHtmlDropDowns', () => {
+    const div = document.createElement('div');
+    ReactDom.render(<MakeHtmlDropDowns/>, div)
+  })
+  it('renders MakeHtmlHomeButton', ()=> {
+    const div = document.createElement('div');
+    ReactDom.render(<MakeHtmlHomeButton/>, div)
   })
 });

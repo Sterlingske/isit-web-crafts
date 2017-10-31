@@ -21,11 +21,4 @@ describe ('Home Buttons Tests', () => {
   it('is true, true?', () => {
     expect(true).toBe(true);
   });
-
-  it('render state of message after button press', () =>{
-    const wrapper = shallow(<HomeButtons/>);
-    const status = The User wants to makeHTML
-    elfDebugEnzyme.getLast(wrapper, 'message', true);
-    expect(wrapper.contains(status)).toEqual(true);
-  });
 });
