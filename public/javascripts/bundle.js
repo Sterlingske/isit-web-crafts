@@ -33895,7 +33895,7 @@ exports.default = MakeHtml;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -33931,9 +33931,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var styles = {
-    customWidth: {
-        width: 500
-    }
+  customWidth: {
+    width: 500
+  }
 };
 
 //const items = [];
@@ -33941,139 +33941,154 @@ var siteDirs = [];
 var destinationDirs = [];
 
 var MakeHtmlDropDowns = function (_React$Component) {
-    _inherits(MakeHtmlDropDowns, _React$Component);
+  _inherits(MakeHtmlDropDowns, _React$Component);
 
-    function MakeHtmlDropDowns() {
-        _classCallCheck(this, MakeHtmlDropDowns);
+  function MakeHtmlDropDowns() {
+    _classCallCheck(this, MakeHtmlDropDowns);
 
-        var _this = _possibleConstructorReturn(this, (MakeHtmlDropDowns.__proto__ || Object.getPrototypeOf(MakeHtmlDropDowns)).call(this));
+    var _this = _possibleConstructorReturn(this, (MakeHtmlDropDowns.__proto__ || Object.getPrototypeOf(MakeHtmlDropDowns)).call(this));
 
-        _this.state = {
-            makeImage: 'Make Image',
-            makeHtml: 'Make HTML',
-            value: 1
-        };
-        _this.handleChange = _this.handleChange.bind(_this);
-        return _this;
+    _this.state = {
+      walk: 'Generate HTML',
+      siteDirs: 'unknown',
+      destinationDirs: 'unknown',
+      configSummary: [],
+      value: 1
+    };
+    _this.handleSiteDir = _this.handleSiteDir.bind(_this);
+    _this.handleDestDir = _this.handleDestDir.bind(_this);
+    _this.generateHtml = _this.generateHtml.bind(_this);
+    return _this;
+  }
+
+  _createClass(MakeHtmlDropDowns, [{
+    key: 'handleSiteDir',
+    value: function handleSiteDir(event, index, value) {
+      this.setState({
+        value: value
+      });
+    }
+  }, {
+    key: 'handleDestDir',
+    value: function handleDestDir(event, index, value) {
+      this.setState({
+        value: value,
+        destinationDirs: event.target.innerHTML,
+        siteDir: destinationDirs[value].props.primaryText
+      });
     }
 
-    _createClass(MakeHtmlDropDowns, [{
-        key: 'handleChange',
-        value: function handleChange(event, index, value) {
-            this.setState({ value: value });
-        }
-    }, {
-        key: 'handleSiteDir',
-        value: function handleSiteDir(event, index, value) {
-            this.setState({ value: value });
-        }
-    }, {
-        key: 'handleDestDir',
-        value: function handleDestDir(event, index, value) {
-            this.setState({ value: value });
-        }
+    /**
+    * @typedef {Object} configSummary
+    * @property {Object} siteDirs
+    * @property {Object} destinationDirs
+    * @property {String} baseDir
+    * @property {String} mostRecentDate
+    */
 
-        /**
-         * @typedef {Object} configSummary
-         * @property {Object} siteDirs
-         * @property {Object} destinationDirs
-         * @property {String} baseDir
-         * @property {String} mostRecentDate
-         */
+  }, {
+    key: 'generateHtml',
+    value: function generateHtml() {
+      console.log(this.state.value);
+      console.log(destinationDirs[this.state.value]);
+      console.log(siteDirs[this.state.value]);
+      //walking.runWalkReact('qSingle', this.state.siteDir, this.state.destDir);
+      var query = '/makers/walk?siteDirsIndex=' + this.state.value;
+      var that = this;
+      fetch(query).then(function (response) {
+        return response.json();
+      }).then(function (configSummary) {
+        console.log(JSON.stringify(configSummary, null, 4));
+        // CALL that.setState to **state.configSummary** to configSummary.htmlFilesWritten
+      }).catch(function (ex) {
+        console.log('parsing failed', ex);
+      });
+    }
+  }, {
+    key: 'loadConfig',
+    value: function loadConfig() {
+      var that = this;
+      fetch('/makers/config').then(function (response) {
+        return response.json();
+      }).then(function (configSummary) {
+        //console.log('parsed json', JSON.stringify(configSummary, null, 4));
+        siteDirs.length = 0;
+        configSummary.siteDirs.forEach(function (dir, index) {
+          var showDir = configSummary.baseDir + dir;
+          siteDirs.push(_react2.default.createElement(_MenuItem2.default, { value: index,
+            key: index,
+            primaryText: showDir
+          }));
+        });configSummary.destinationDirs.forEach(function (dir, index) {
+          var showDir = configSummary.baseDir + dir;
+          destinationDirs.push(_react2.default.createElement(_MenuItem2.default, { value: index,
+            key: index,
+            primaryText: showDir
+          }));
+        });
+      }).catch(function (ex) {
+        console.log('parsing failed', ex);
+      });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.loadConfig();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _MuiThemeProvider2.default,
+        null,
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'h1',
+            null,
+            ' Home Page '
+          ),
+          _react2.default.createElement(
+            _DropDownMenu2.default,
+            {
+              value: this.state.value,
+              onChange: this.handleSiteDir,
+              autoWidth: true,
+              style: styles.customWidth
+            },
+            siteDirs
+          ),
+          _react2.default.createElement(
+            _DropDownMenu2.default,
+            {
+              value: this.state.value,
+              onChange: this.handleDestDir,
+              autoWidth: true,
+              style: styles.customWidth
+            },
+            destinationDirs
+          ),
+          _react2.default.createElement(
+            _RaisedButton2.default,
+            {
+              style: buttonStyle,
+              primary: true,
+              onClick: this.generateHtml
+            },
+            'Generate HTML'
+          ),
+          ' '
+        )
+      );
+    }
+  }]);
 
-    }, {
-        key: 'generateHtml',
-        value: function generateHtml() {
-            console.log(this.state.value);
-            console.log(siteDirs[this.state.value]);
-            //walking.runWalkReact('qSingle', this.state.siteDir, this.state.destDir);
-            var query = '/makers/walk?siteDirsIndex=' + this.state.value;
-            var that = this;
-            fetch(query).then(function (response) {
-                return response.json();
-            }).then(function (configSummary) {
-                console.log(JSON.stringify(configSummary, null, 4));
-                // CALL that.setState to **state.configSummary** to configSummary.htmlFilesWritten
-            }).catch(function (ex) {
-                console.log('parsing failed', ex);
-            });
-        }
-    }, {
-        key: 'loadConfig',
-        value: function loadConfig() {
-            var that = this;
-            fetch('/makers/config').then(function (response) {
-                return response.json();
-            }).then(function (configSummary) {
-                //console.log('parsed json', JSON.stringify(configSummary, null, 4));
-                items.length = 0;
-                configSummary.siteDirs.forEach(function (dir, index) {
-                    var showDir = configSummary.baseDir + dir;
-                    siteDirs.push(_react2.default.createElement(_MenuItem2.default, { value: index, key: index, primaryText: showDir }));
-                });
-                configSummary.destinationDirs.forEach(function (dir, index) {
-                    var showDir = configSummary.baseDir + dir;
-                    destinationDirs.push(_react2.default.createElement(_MenuItem2.default, { value: index, key: index, primaryText: showDir }));
-                });
-            }).catch(function (ex) {
-                console.log('parsing failed', ex);
-            });
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.loadConfig();
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                _MuiThemeProvider2.default,
-                null,
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'h1',
-                        null,
-                        'Home Page'
-                    ),
-                    _react2.default.createElement(
-                        _DropDownMenu2.default,
-                        {
-                            value: this.state.value,
-                            onChange: this.handleDestDir,
-                            autoWidth: true
-                        },
-                        destinationDirs
-                    ),
-                    _react2.default.createElement(
-                        _DropDownMenu2.default,
-                        {
-                            value: this.state.value,
-                            onChange: this.handleSiteDir,
-                            autoWidth: true
-                        },
-                        siteDirs
-                    ),
-                    _react2.default.createElement(
-                        _RaisedButton2.default,
-                        {
-                            style: buttonStyle,
-                            primary: true,
-                            onClick: this.generateHtml },
-                        this.state.value
-                    )
-                )
-            );
-        }
-    }]);
-
-    return MakeHtmlDropDowns;
+  return MakeHtmlDropDowns;
 }(_react2.default.Component);
 
 var buttonStyle = {
-    margin: '15px'
+  margin: '15px'
 };
 
 exports.default = MakeHtmlDropDowns;
