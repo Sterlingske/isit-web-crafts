@@ -6,15 +6,16 @@ import MakeHtmlHomeButton from './MakeHtmlHomeButton.js';
 class MakeHtml extends React.Component {
     render() {
 
-        return <MuiThemeProvider>
+        return (
+          <MuiThemeProvider>
             <div>
 
             <MakeHtmlHomeButton/>
             <MakeHtmlDropDowns/>
 
             </div>
-        </MuiThemeProvider>;
-    };
+        </MuiThemeProvider>
+    )};
 }
 
 export default MakeHtml;

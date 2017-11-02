@@ -10,7 +10,7 @@ function reactMakeHtml(event, customMessage) {
 }
 
 function reactHome() {
-  $('#pageLoad').empty();
+  document.getElementById('pageLoad').innerHTML= '';
   home();
 }
 

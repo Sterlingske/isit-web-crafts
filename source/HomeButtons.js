@@ -30,6 +30,7 @@ export default class HomeButtons extends React.Component {
                     primary={true}
                     onClick={this.makeHtml}>{this.state.makeHtml}</RaisedButton>
                 <RaisedButton
+                    id="makeImage"
                     style={buttonStyle}
                     primary={true}
                     onClick={this.makeImage}>{this.state.makeImage}</RaisedButton>

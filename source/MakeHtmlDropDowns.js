@@ -1,5 +1,6 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import 'whatwg-fetch';
@@ -10,7 +11,9 @@ const styles = {
     },
 };
 
-const items = [];
+//const items = [];
+const siteDirs = [];
+const destinationDirs = [];
 
 class MakeHtmlDropDowns extends React.Component {
 
@@ -27,7 +30,13 @@ class MakeHtmlDropDowns extends React.Component {
     }
 
     handleChange(event, index, value) {
-        this.setState({value});
+      this.setState({value})
+    }
+    handleSiteDir(event, index, value) {
+      this.setState({value});
+    }
+    handleDestDir(event, index, value) {
+      this.setState({value: value});
     }
 
     /**
@@ -37,6 +46,24 @@ class MakeHtmlDropDowns extends React.Component {
      * @property {String} baseDir
      * @property {String} mostRecentDate
      */
+     generateHtml() {
+    console.log(this.state.value);
+    console.log(siteDirs[this.state.value]);
+    //walking.runWalkReact('qSingle', this.state.siteDir, this.state.destDir);
+    const query = '/makers/walk?siteDirsIndex=' + this.state.value;
+    var that = this;
+    fetch(query)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(configSummary) {
+            console.log(JSON.stringify(configSummary, null, 4));
+            // CALL that.setState to **state.configSummary** to configSummary.htmlFilesWritten
+        })
+        .catch(function(ex) {
+            console.log('parsing failed', ex);
+        });
+}
     loadConfig() {
         const that = this;
         fetch('/makers/config')
@@ -48,7 +75,11 @@ class MakeHtmlDropDowns extends React.Component {
                 items.length = 0;
                 configSummary.siteDirs.forEach(function (dir, index) {
                     const showDir = configSummary.baseDir + dir;
-                    items.push(<MenuItem value={index} key={index} primaryText={showDir} />);
+                    siteDirs.push(<MenuItem value={index} key={index} primaryText={showDir} />);
+                });
+                configSummary.destinationDirs.forEach(function (dir, index) {
+                    const showDir = configSummary.baseDir + dir;
+                    destinationDirs.push(<MenuItem value={index} key={index} primaryText={showDir} />);
                 });
             })
             .catch(function (ex) {
@@ -66,14 +97,26 @@ class MakeHtmlDropDowns extends React.Component {
                 <h1>Home Page</h1>
                 <DropDownMenu
                     value={this.state.value}
-                    onChange={this.handleChange}
-                    style={styles.customWidth}
-                    autoWidth={false}
+                    onChange={this.handleDestDir}
+                    autoWidth={true}
                 >
-                    {items}
+                    {destinationDirs}
                 </DropDownMenu>
 
-                <p>This is a DropDown component.</p>
+                <DropDownMenu
+                value={this.state.value}
+                onChange={this.handleSiteDir}
+                autoWidth={true}
+                >
+                  {siteDirs}
+                </DropDownMenu>
+
+                <RaisedButton
+                    style={buttonStyle}
+                    primary={true}
+                    onClick={this.generateHtml}>
+                        {this.state.value}
+                </RaisedButton>
             </div>
         </MuiThemeProvider>
     };
