@@ -34017,14 +34017,13 @@ var MakeHtmlDropDowns = function (_React$Component) {
           var showDir = configSummary.baseDir + dir;
           siteDirs.push(_react2.default.createElement(_MenuItem2.default, { value: index,
             key: index,
-            primaryText: showDir
-          }));
-        });configSummary.destinationDirs.forEach(function (dir, index) {
+            primaryText: showDir }));
+        });
+        configSummary.destinationDirs.forEach(function (dir, index) {
           var showDir = configSummary.baseDir + dir;
           destinationDirs.push(_react2.default.createElement(_MenuItem2.default, { value: index,
             key: index,
-            primaryText: showDir
-          }));
+            primaryText: showDir }));
         });
       }).catch(function (ex) {
         console.log('parsing failed', ex);

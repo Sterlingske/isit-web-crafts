@@ -1,15 +1,15 @@
 {
     "calvert": {
-        "base-dir": "/home/charlie/",
+        "base-dir": "/home/bcuser/",
         "bootswatch": "cosmo",
         "most-recent-date": "2017-08-14",
         "site-dirs": [
-            "Documents/AllSite",
-            "Git/CloudNotes/Isit320"
+            "Documents/site-dirs/MarkDown1",
+            "Documents/site-dirs/MarkDown2"
         ],
         "destination-dirs": [
-            "/home/charlie/Git/charliecalvert.github.io/books/CloudNotes/Isit320/",
-            "/var/www/html/"
+            "Documents/desitnation-dirs",
+            "Documents/destination-dirs"
         ],
         "destination-dirs-extra": [{
             "base": "/var/www/html/",

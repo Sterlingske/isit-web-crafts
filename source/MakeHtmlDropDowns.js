@@ -82,28 +82,15 @@ class MakeHtmlDropDowns extends React.Component {
       siteDirs.length = 0;
       configSummary.siteDirs.forEach(function(dir, index) {
         const showDir = configSummary.baseDir + dir;
-        siteDirs.push( < MenuItem value = {
-          index
-        }
-        key = {
-          index
-        }
-        primaryText = {
-          showDir
-        }
-        />);
-      }); configSummary.destinationDirs.forEach(function(dir, index) {
+        siteDirs.push( < MenuItem value = {index}
+        key = {index}
+        primaryText = {showDir}/>);
+      });
+      configSummary.destinationDirs.forEach(function(dir, index) {
         const showDir = configSummary.baseDir + dir;
-        destinationDirs.push( < MenuItem value = {
-          index
-        }
-        key = {
-          index
-        }
-        primaryText = {
-          showDir
-        }
-        />);
+        destinationDirs.push( < MenuItem value = {index}
+        key = {index}
+        primaryText = {showDir}/>);
       });
     })
     .catch(function(ex) {

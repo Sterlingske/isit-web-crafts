@@ -22,11 +22,12 @@ render() {
     return <MuiThemeProvider>
         <div>
             <RaisedButton
-                style={buttonStyle}
-                primary={true}
-                onClick={this.goHome}>
-                    {this.state.home}
-            </RaisedButton>
+              id='homeButon'
+              style={buttonStyle}
+              primary={true}
+              onClick={this.goHome}>
+                  {this.state.home}
+          </RaisedButton>
             <p>This is the React MakeHtml component.</p>
         </div>
     </MuiThemeProvider>;
