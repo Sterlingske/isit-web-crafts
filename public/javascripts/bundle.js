@@ -39165,6 +39165,7 @@ var MakeHtmlHomeButton = function (_React$Component) {
                     _react2.default.createElement(
                         _RaisedButton2.default,
                         {
+                            id: 'homeButon',
                             style: buttonStyle,
                             primary: true,
                             onClick: this.goHome },
