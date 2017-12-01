@@ -1,27 +1,33 @@
 {
-    "calvert": {
-        "base-dir": "/home/bcuser/",
-        "bootswatch": "cosmo",
-        "most-recent-date": "2017-08-14",
-        "site-dirs": [
-            "Documents/site-dirs/MarkDown1",
-            "Documents/site-dirs/MarkDown2"
-        ],
-        "destination-dirs": [
-            "Documents/desitnation-dirs",
-            "Documents/destination-dirs"
-        ],
-        "destination-dirs-extra": [{
-            "base": "/var/www/html/",
-            "extra": ""
-        }, {
-            "base": "/var/www/html/Assignments/",
-            "extra": "Assignments"
-        }]
+    "users": {
+        "calvert": {
+            "base-dir": "/home/bcuser/",
+            "bootswatch": "cosmo",
+            "most-recent-date": "2017-08-14",
+            "site-dirs": [
+                "Documents/site-dirs/MarkDown1",
+                "Documents/site-dirs/MarkDown2"
+            ],
+            "destination-dirs": [
+                "Documents/desitnation-dirs",
+                "Documents/destination-dirs"
+            ],
+            "destination-dirs-extra": [
+                {
+                    "base": "/var/www/html/",
+                    "extra": ""
+                },
+                {
+                    "base": "/var/www/html/Assignments/",
+                    "extra": "Assignments"
+                }
+            ]
+        }
     },
     "selectedElvenImages": [
         "california1",
-        "california2"
+        "california2",
+        "california3"
     ],
     "elvenImages": [
         {

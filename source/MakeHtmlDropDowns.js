@@ -70,7 +70,7 @@ class MakeHtmlDropDowns extends React.Component {
     .catch(function(ex) {
       console.log('parsing failed', ex);
     });
-  
+
   loadConfig() {
     const that = this;
     fetch('/makers/config')
@@ -96,8 +96,8 @@ class MakeHtmlDropDowns extends React.Component {
     .catch(function(ex) {
       console.log('parsing failed', ex);
     });
-  }
-
+  };
+  
   componentDidMount() {
     this.loadConfig();
   }

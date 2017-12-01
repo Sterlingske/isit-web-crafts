@@ -38,10 +38,10 @@ router.get('/config', function(request, response) {
         .then(function(configData) {
             elfLog.nano('CONFIG DATA: ', JSON.stringify(configData, null, 4));
 
-            var baseDir = config.get(user, 'base-dir');
-            var siteDirs = config.get(user, 'site-dirs');
-            var mostRecentDate = config.get(user, 'most-recent-date');
-            var destinationDirs = config.get(user, 'destination-dirs');
+            var baseDir = config.get('users', user, 'base-dir');
+            var siteDirs = config.get('users', user, 'site-dirs');
+            var mostRecentDate = config.get('users', user, 'most-recent-date');
+            var destinationDirs = config.get('users', user, 'destination-dirs');
             var configSummary = {
                 'baseDir': baseDir,
                 'mostRecentDate': mostRecentDate,
