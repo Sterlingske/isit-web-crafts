@@ -1,5 +1,9 @@
 {
     "users": {
+        "sespinoza": {
+          "base-dir": "/home/bcuser/",
+          "bootswatch": "wanda"
+        },
         "calvert": {
             "base-dir": "/home/bcuser/",
             "bootswatch": "cosmo",
