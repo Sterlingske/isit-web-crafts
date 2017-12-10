@@ -9,12 +9,12 @@
             "bootswatch": "cosmo",
             "most-recent-date": "2017-08-14",
             "site-dirs": [
-                "Documents/site-dirs/MarkDown1",
-                "Documents/site-dirs/MarkDown2"
+                "Documents/site-dirs",
+                "Documents/site-dirs"
             ],
             "destination-dirs": [
-                "Documents/desitnation-dirs",
-                "Documents/destination-dirs"
+                "/home/bcuser/temp/",
+                "/home/bcuser/temp/"
             ],
             "destination-dirs-extra": [
                 {
